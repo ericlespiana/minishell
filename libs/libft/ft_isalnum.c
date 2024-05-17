@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: tsantana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/17 18:12:11 by tsantana         ###   ########.fr       */
+/*   Created: 2023/10/09 16:35:34 by tsantana          #+#    #+#             */
+/*   Updated: 2023/10/11 15:42:35 by tsantana         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "libft.h"
-#include <stdlib.h>
 #include "libft.h"
 
-int	main (void)
+int	ft_isalnum(int c)
 {
-	while (1)
-	{
-		char *teste = readline("minishel");
-		if (teste)
-			free(teste);
-		if (!teste)
-			exit(EXIT_SUCCESS);
-	}
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
 	return (0);
 }

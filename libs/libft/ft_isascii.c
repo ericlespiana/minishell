@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: tsantana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/17 18:12:11 by tsantana         ###   ########.fr       */
+/*   Created: 2023/10/09 16:44:32 by tsantana          #+#    #+#             */
+/*   Updated: 2023/10/12 16:00:47 by tsantana         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "libft.h"
-#include <stdlib.h>
-#include "libft.h"
-
-int	main (void)
+int	ft_isascii(int c)
 {
-	while (1)
+	if (c >= 0 && c <= 127)
 	{
-		char *teste = readline("minishel");
-		if (teste)
-			free(teste);
-		if (!teste)
-			exit(EXIT_SUCCESS);
+		return (1);
 	}
 	return (0);
 }

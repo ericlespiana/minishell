@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/17 18:12:11 by tsantana         ###   ########.fr       */
+/*   Created: 2023/10/16 16:59:47 by tsantana          #+#    #+#             */
+/*   Updated: 2023/10/17 18:14:37 by tsantana         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "libft.h"
-#include <stdlib.h>
 #include "libft.h"
 
-int	main (void)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	while (1)
+	size_t	src_len;
+	size_t	counter;
+
+	counter = 0;
+	src_len = ft_strlen(src);
+	if (size == 0)
+		return (src_len);
+	else
 	{
-		char *teste = readline("minishel");
-		if (teste)
-			free(teste);
-		if (!teste)
-			exit(EXIT_SUCCESS);
+		while (counter <= (size - 1) && src[counter] != '\0')
+		{
+			dst[counter] = src[counter];
+			counter++;
+		}
 	}
-	return (0);
+	if (counter == size)
+		counter--;
+	dst[counter] = '\0';
+	return (src_len);
 }

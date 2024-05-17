@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/17 18:12:11 by tsantana         ###   ########.fr       */
+/*   Created: 2023/10/10 18:15:10 by tsantana          #+#    #+#             */
+/*   Updated: 2023/10/15 20:17:57 by tsantana         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "libft.h"
-#include <stdlib.h>
 #include "libft.h"
 
-int	main (void)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	while (1)
-	{
-		char *teste = readline("minishel");
-		if (teste)
-			free(teste);
-		if (!teste)
-			exit(EXIT_SUCCESS);
-	}
+	size_t			i;
+	unsigned char	*ptr_s1;
+	unsigned char	*ptr_s2;
+
+	i = 0;
+	ptr_s1 = (unsigned char *) s1;
+	ptr_s2 = (unsigned char *) s2;
+	while (i < n && ptr_s1[i] != '\0'
+		&& ptr_s2[i] != '\0' && ptr_s1[i] == ptr_s2[i])
+		i++;
+	if (n != i)
+		return (ptr_s1[i] - ptr_s2[i]);
 	return (0);
 }

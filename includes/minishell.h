@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/17 18:12:11 by tsantana         ###   ########.fr       */
+/*   Created: 2024/05/17 14:25:07 by tsantana          #+#    #+#             */
+/*   Updated: 2024/05/17 17:59:11 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "libft.h"
-#include <stdlib.h>
-#include "libft.h"
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
-int	main (void)
+# include <stdio.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+
+# include "../libs/libft/libft.h"
+
+typedef struct s_matrix
 {
-	while (1)
-	{
-		char *teste = readline("minishel");
-		if (teste)
-			free(teste);
-		if (!teste)
-			exit(EXIT_SUCCESS);
-	}
-	return (0);
-}
+	t_list			*words;
+	struct s_matrix	*next;
+}	t_matrix;
+
+typedef struct	s_mini
+{
+	t_matrix	*cmmds;
+}	t_mini;
+
+#endif

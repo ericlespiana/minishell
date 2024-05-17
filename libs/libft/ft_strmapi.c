@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/17 18:12:11 by tsantana         ###   ########.fr       */
+/*   Created: 2023/11/04 16:11:55 by tsantana          #+#    #+#             */
+/*   Updated: 2023/11/04 17:11:43 by tsantana         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "libft.h"
-#include <stdlib.h>
 #include "libft.h"
 
-int	main (void)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	while (1)
+	unsigned char	*string;
+	unsigned int	size;
+	unsigned int	count;
+
+	size = ft_strlen(s);
+	string = ft_calloc(size + 1, sizeof(unsigned char));
+	if (string == NULL)
+		return (NULL);
+	count = 0;
+	while (count < size)
 	{
-		char *teste = readline("minishel");
-		if (teste)
-			free(teste);
-		if (!teste)
-			exit(EXIT_SUCCESS);
+		string[count] = (*f)(count, s[count]);
+		count++;
 	}
-	return (0);
+	return ((char *)string);
 }

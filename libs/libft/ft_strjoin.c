@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/17 18:12:11 by tsantana         ###   ########.fr       */
+/*   Created: 2023/10/18 21:34:03 by tsantana          #+#    #+#             */
+/*   Updated: 2023/10/18 21:57:49 by tsantana         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "libft.h"
-#include <stdlib.h>
 #include "libft.h"
 
-int	main (void)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	while (1)
-	{
-		char *teste = readline("minishel");
-		if (teste)
-			free(teste);
-		if (!teste)
-			exit(EXIT_SUCCESS);
-	}
-	return (0);
+	char			*new_arr;
+	unsigned int	size;
+
+	size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	new_arr = (char *)ft_calloc(size, sizeof(char));
+	if (new_arr == NULL)
+		return (NULL);
+	ft_strlcpy(new_arr, s1, ft_strlen(s1) + 1);
+	ft_strlcat(new_arr, s2, size);
+	return (new_arr);
 }

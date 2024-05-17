@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_printf_utils_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/17 18:12:11 by tsantana         ###   ########.fr       */
+/*   Created: 2023/12/16 18:05:10 by tsantana          #+#    #+#             */
+/*   Updated: 2024/04/07 16:07:25 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "libft.h"
-#include <stdlib.h>
 #include "libft.h"
 
-int	main (void)
+void	pf_putnbr_convert(unsigned long int numb, t_pf_list **list, char *hexas)
 {
-	while (1)
+	if (numb <= 15)
+		pf_ft_lstadd_back(list, pf_ft_lstnew(hexas[numb]));
+	if (numb >= 16)
 	{
-		char *teste = readline("minishel");
-		if (teste)
-			free(teste);
-		if (!teste)
-			exit(EXIT_SUCCESS);
+		pf_putnbr_convert((numb / 16), list, hexas);
+		pf_putnbr_convert((numb % 16), list, hexas);
 	}
-	return (0);
 }

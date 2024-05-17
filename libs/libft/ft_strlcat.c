@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/17 18:12:11 by tsantana         ###   ########.fr       */
+/*   Created: 2023/10/16 18:32:51 by tsantana          #+#    #+#             */
+/*   Updated: 2023/11/06 19:23:44 by tsantana         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "libft.h"
-#include <stdlib.h>
 #include "libft.h"
 
-int	main (void)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	while (1)
+	size_t	i;
+	size_t	result;
+
+	i = 0;
+	while (dst[i] != '\0')
+		i++;
+	if (i >= size)
+		return (ft_strlen(src) + size);
+	while (i < (size - 1) && *src)
 	{
-		char *teste = readline("minishel");
-		if (teste)
-			free(teste);
-		if (!teste)
-			exit(EXIT_SUCCESS);
+		dst[i] = *src;
+		i++;
+		src++;
 	}
-	return (0);
+	dst[i] = '\0';
+	result = ft_strlen(dst) + ft_strlen(src);
+	return (result);
 }

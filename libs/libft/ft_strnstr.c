@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/17 18:12:11 by tsantana         ###   ########.fr       */
+/*   Created: 2023/10/16 20:23:44 by tsantana          #+#    #+#             */
+/*   Updated: 2023/11/05 17:36:11 by tsantana         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "libft.h"
-#include <stdlib.h>
 #include "libft.h"
 
-int	main (void)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	while (1)
+	size_t	i;
+
+	i = 0;
+	if (!(*little))
+		return ((char *) big);
+	while (i <= len && len >= 0 && big[i] != '\0')
 	{
-		char *teste = readline("minishel");
-		if (teste)
-			free(teste);
-		if (!teste)
-			exit(EXIT_SUCCESS);
+		if (i + ft_strlen(little) > len)
+			return (NULL);
+		if (big[i] == little[0])
+			if (ft_strncmp(&big[i], &little[0], ft_strlen(little)) == 0
+				&& (ft_strlen(little) + i) <= len)
+				return ((char *)&big[i]);
+		i++;
 	}
 	return (0);
 }
