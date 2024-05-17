@@ -6,7 +6,7 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:25:07 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/17 17:59:11 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/05/17 19:35:24 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <stdlib.h>
 
 # include "../libs/libft/libft.h"
 
