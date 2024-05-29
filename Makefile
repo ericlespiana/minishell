@@ -8,7 +8,9 @@ HEADERS	:= -I includes -I libs/libft
 
 LIBFT	:= libs/libft/libft.a
 
-SRC		:= src/minishell.c
+SRC		:= src/minishell.c \
+		   src/main_utils.c \
+		   src/free_structs.c
 
 
 OBJ		:= $(SRC:%.c=%.o)

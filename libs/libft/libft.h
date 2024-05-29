@@ -6,7 +6,7 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:12:18 by tsantana          #+#    #+#             */
-/*   Updated: 2024/04/23 20:11:39 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/05/22 15:04:04 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef struct s_list
 {
-	void			*content;
+	char			content;
 	struct s_list	*next;
 }	t_list;
 
@@ -32,7 +32,7 @@ typedef struct s_pf_list
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 size_t		ft_strlcat(char *dst, const char *src, size_t size);
 size_t		ft_strlen(const char *c);
-t_list		*ft_lstnew(void *content);
+t_list		*ft_lstnew(char content);
 t_list		*ft_lstlast(t_list *lst);
 t_pf_list	*pf_ft_lstnew(char content);
 int			ft_isalnum(int c);
@@ -71,9 +71,9 @@ void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 void		ft_lstadd_front(t_list **lst, t_list *new);
 void		ft_lstadd_back(t_list **lst, t_list *new);
-void		ft_lstdelone(t_list *lst, void (*del)(void *));
-void		ft_lstclear(t_list **lst, void (*del)(void *));
-void		ft_lstiter(t_list *lst, void (*f)(void *));
+void		ft_lstdelone(t_list *lst, void (*del)(char));
+void		ft_lstclear(t_list **lst, void (*del)(char));
+void		ft_lstiter(t_list *lst, void (*f)(char));
 void		pf_ft_lstadd_back(t_pf_list **lst, t_pf_list *pf_new);
 void		pf_ft_putnumb(unsigned long n, t_pf_list **list);
 void		pf_ft_put_address(unsigned long int address, t_pf_list **list);

@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   free_structs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 20:16:34 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/22 15:01:36 by tsantana         ###   ########.fr       */
+/*   Created: 2024/05/18 16:44:18 by tsantana          #+#    #+#             */
+/*   Updated: 2024/05/29 14:39:07 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "minishell.h"
+#include <stdlib.h>
 
-t_list	*ft_lstnew(char content)
+static void	clear_matrix(t_matrix *mtx)
 {
-	t_list	*new_list;
+	t_matrix	*tmp;
 
-	new_list = malloc(sizeof(t_list));
-	if (new_list == NULL)
-		return (NULL);
-	new_list->content = content;
-	new_list->next = NULL;
-	return (new_list);
+	tmp = NULL;
+	while (mtx)
+	{
+		tmp = mtx;
+		mtx = mtx->next;
+		free(tmp->str);
+		free(tmp);
+	}
+}
+
+void	final_free(t_mini *mini)
+{
+	t_matrix	*temp;
+
+	temp = mini->cmmds;
+	if (mini->in_ms)
+		free(mini->in_ms);
+	if (mini->cmmds)
+		clear_matrix(mini->cmmds);
 }

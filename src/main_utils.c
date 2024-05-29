@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   main_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 20:16:34 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/22 15:01:36 by tsantana         ###   ########.fr       */
+/*   Created: 2024/05/17 20:08:25 by tsantana          #+#    #+#             */
+/*   Updated: 2024/05/29 15:08:55 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "minishell.h"
+#include <strings.h>
 
-t_list	*ft_lstnew(char content)
+int	aux_parse(char letter)
 {
-	t_list	*new_list;
+	if (letter == ' ')
+		return (1);
+	if (letter == '|' || letter == '&' || letter == '<' || letter == '>')
+		return (2);
+	return (0);
+}
 
-	new_list = malloc(sizeof(t_list));
-	if (new_list == NULL)
-		return (NULL);
-	new_list->content = content;
-	new_list->next = NULL;
-	return (new_list);
+int	size_str(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i] && aux_parse(str[i]) == 0)
+		i++;
+	return (i);
 }
