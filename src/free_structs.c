@@ -6,7 +6,7 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 16:44:18 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/29 17:32:29 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:55:49 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,14 @@ static void	clear_matrix(t_matrix *mtx)
 	tmp = NULL;
 	while (mtx)
 	{
+		if (!mtx->next)
+		{
+			free(mtx->str);
+			free(mtx);
+			break ;
+		}
 		tmp = mtx;
-		if (mtx->next)
-			mtx = mtx->next;
+		mtx = mtx->next;
 		if (tmp->str)
 			free(tmp->str);
 		if (tmp)

@@ -6,7 +6,7 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/29 17:40:31 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:53:10 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ int	main(void)
 	while (1)
 	{
 		mini.in_ms = readline("minishell");
-		// add_history(mini.in_ms);
 		if (!mini.in_ms)
 			exit(EXIT_SUCCESS);
 		if (mini.in_ms[0] != '\0')
