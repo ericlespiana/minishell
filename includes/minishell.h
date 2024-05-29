@@ -6,7 +6,7 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:25:07 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/27 20:57:14 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:12:54 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # include <unistd.h>
 #include "libft.h"
 
-# include "../libs/libft/libft.h"
-
 typedef struct s_envs
 {
 	char			*envkey;
@@ -32,6 +30,7 @@ typedef struct s_envs
 typedef struct s_matrix
 {
 	char			*str;
+	int				type;
 	struct s_matrix	*next;
 }	t_matrix;
 
@@ -41,6 +40,16 @@ typedef struct	s_mini
 	t_envs		*envars;
 	t_matrix	*cmmds;
 }	t_mini;
+
+typedef enum e_type
+{
+	WORD = 0,
+	PIPE,
+	GREATER,
+	LESSER,
+	DOUBLEGREATER,
+	DOUBLELESSER,
+}	t_type;
 
 int			aux_parse(char letter);
 int			size_str(char *str);

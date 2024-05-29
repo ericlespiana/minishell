@@ -6,7 +6,7 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/29 15:27:03 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:16:47 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,25 @@ static void	free_split(char **split)
 	free(split);
 }
 
+static int	search_type(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '|' && !str[i + 1])
+		return (PIPE);
+	else if (str[i] == '>' && !str[i + 1])
+		return (GREATER);
+	else if (str[i] == '<' && !str[i + 1])
+		return (LESSER);
+	else if (str[i] == '<' && str[i + 1] == '<')
+		return (DOUBLELESSER);
+	else if (str[i] == '>' && str[i + 1] == '>')
+		return (DOUBLEGREATER);
+	else
+		return (WORD);
+}
+
 static t_matrix	*create_mtx(char *str)
 {
 	t_matrix	*ms;
@@ -35,6 +54,7 @@ static t_matrix	*create_mtx(char *str)
 	if (!ms)
 		return (NULL);
 	ms->str = ft_strdup(str);
+	ms->type = search_type(str);
 	ms->next = NULL;
 	return (ms);
 }
@@ -70,7 +90,7 @@ static void	print_mtx(t_matrix *mtx)
 {
 	while (mtx)
 	{
-		ft_printf("%s\n", mtx->str);
+		ft_printf("%s - TOKEN: %d\n", mtx->str, mtx->type);
 		mtx = mtx->next;
 	}
 }
