@@ -6,7 +6,7 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 16:44:18 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/29 18:00:01 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/05/30 22:10:04 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ static void	clear_matrix(t_matrix *mtx)
 
 void	final_free(t_mini *mini)
 {
-	t_matrix	*temp;
-
-	temp = mini->cmmds;
 	if (mini->in_ms)
 		free(mini->in_ms);
 	if (mini->cmmds)

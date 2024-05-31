@@ -6,12 +6,12 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/30 20:19:49 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/05/30 22:10:00 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "libft.h"
+#include <readline/readline.h>
 
 static void	free_split(char **split)
 {
@@ -104,11 +104,15 @@ int	main(void)
 	{
 		mini.in_ms = readline("minishell ");
 		if (!mini.in_ms)
+		{
+			rl_clear_history();
 			exit(EXIT_SUCCESS);
+		}
 		if (mini.in_ms[0] != '\0')
 		{
 			ft_printf("%s\n", mini.in_ms);
 			mini.cmmds = parse_str(mini.in_ms);
+			add_history(mini.in_ms);
 			print_mtx(mini.cmmds);
 		}
 		final_free(&mini);
