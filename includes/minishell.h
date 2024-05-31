@@ -6,7 +6,7 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:25:07 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/29 16:12:54 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/05/30 20:19:37 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ typedef enum e_type
 	DOUBLELESSER,
 }	t_type;
 
+char		**ms_split(char const *s);
 int			aux_parse(char letter);
 int			size_str(char *str);
 void		final_free(t_mini *mini);
+char		**custom_split(char const *s, char c);
 
 #endif

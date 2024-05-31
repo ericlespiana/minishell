@@ -6,7 +6,7 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:23:44 by tsantana          #+#    #+#             */
-/*   Updated: 2023/11/05 17:36:11 by tsantana         ###   ########.org.br   */
+/*   Updated: 2024/05/29 19:39:26 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	i = 0;
 	if (!(*little))
 		return ((char *) big);
-	while (i <= len && len >= 0 && big[i] != '\0')
+	while (i <= len && big[i] != '\0')
 	{
 		if (i + ft_strlen(little) > len)
 			return (NULL);

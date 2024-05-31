@@ -6,14 +6,12 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/29 17:53:10 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/05/30 20:19:49 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "libft.h"
-#include <readline/history.h>
-#include <stdlib.h>
 
 static void	free_split(char **split)
 {
@@ -71,7 +69,7 @@ static t_matrix	*parse_str(char *str)
 		return (NULL);
 	i = 0;
 	mtx = NULL;
-	parse_str = ft_split(str, ' ');
+	parse_str = custom_split(str, ' ');
 	mtx = create_mtx(parse_str[i]);
 	if (!mtx)
 		return (NULL);
@@ -104,7 +102,7 @@ int	main(void)
 	mini.cmmds = NULL;
 	while (1)
 	{
-		mini.in_ms = readline("minishell");
+		mini.in_ms = readline("minishell ");
 		if (!mini.in_ms)
 			exit(EXIT_SUCCESS);
 		if (mini.in_ms[0] != '\0')

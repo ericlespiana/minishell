@@ -6,7 +6,7 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 19:12:52 by tsantana          #+#    #+#             */
-/*   Updated: 2024/04/13 22:17:24 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:38:06 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ static void	ft_putnbr(int n, t_pf_list **list)
 
 static void	custom_sc(t_pf_list **list, va_list args, char c)
 {
-	int	count;
-
-	count = 0;
 	if (!args)
 		return ;
 	else if (c == '%')

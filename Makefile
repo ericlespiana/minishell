@@ -10,7 +10,8 @@ LIBFT	:= libs/libft/libft.a
 
 SRC		:= src/minishell.c \
 		   src/main_utils.c \
-		   src/free_structs.c
+		   src/free_structs.c \
+		   src/custom_split.c
 
 
 OBJ		:= $(SRC:%.c=%.o)
