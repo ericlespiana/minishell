@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_structs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: erpiana <erpiana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 16:44:18 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/30 22:10:04 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/05/31 22:21:00 by erpiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ void	final_free(t_mini *mini)
 		free(mini->in_ms);
 	if (mini->cmmds)
 		clear_matrix(mini->cmmds);
+	*mini = (t_mini){0};
 }

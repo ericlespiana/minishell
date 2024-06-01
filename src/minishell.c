@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: erpiana <erpiana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/30 22:10:00 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/05/31 22:23:37 by erpiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,9 @@ int	main(void)
 	t_mini	mini;
 
 	mini = (t_mini){0};
-	mini.cmmds = NULL;
 	while (1)
 	{
-		mini.in_ms = readline("minishell ");
+		mini.in_ms = readline("minishell> ");
 		if (!mini.in_ms)
 		{
 			rl_clear_history();
@@ -110,7 +109,6 @@ int	main(void)
 		}
 		if (mini.in_ms[0] != '\0')
 		{
-			ft_printf("%s\n", mini.in_ms);
 			mini.cmmds = parse_str(mini.in_ms);
 			add_history(mini.in_ms);
 			print_mtx(mini.cmmds);
