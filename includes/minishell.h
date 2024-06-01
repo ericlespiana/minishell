@@ -6,7 +6,7 @@
 /*   By: erpiana <erpiana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:25:07 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/31 22:24:21 by erpiana          ###   ########.fr       */
+/*   Updated: 2024/06/01 16:49:39 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,12 @@ typedef enum e_type
 	DOUBLELESSER,
 }	t_type;
 
+char		*put_space_ms(char *str);
 char		**ms_split(char const *s);
+char		**custom_split(char const *s, char c);
 int			aux_parse(char letter);
 int			size_str(char *str);
 void		final_free(t_mini *mini);
-char		**custom_split(char const *s, char c);
+t_matrix	*parse_str(char *str);
 
 #endif
