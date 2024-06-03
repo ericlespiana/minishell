@@ -6,7 +6,7 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 15:46:29 by tsantana          #+#    #+#             */
-/*   Updated: 2024/06/01 18:28:15 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/06/03 15:16:29 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static void	aux_cond(char *str, char *dest, int *i, int *j)
 {
-	if (aux_parse(str[(*i) + 1]) == 2)
+	if (aux_parse(str[(*i) + 1]) == 2 && (str[(*i)] == str[(*i) + 1]))
 	{
 		dest[(*j)++] = ' ';
 		dest[(*j)++] = str[(*i)++];
