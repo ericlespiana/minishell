@@ -6,13 +6,13 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:56:02 by tsantana          #+#    #+#             */
-/*   Updated: 2024/06/01 15:46:48 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/06/03 20:34:26 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	free_split(char **split)
+void	free_split(char **split)
 {
 	int	i;
 

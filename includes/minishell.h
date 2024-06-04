@@ -6,7 +6,7 @@
 /*   By: erpiana <erpiana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:25:07 by tsantana          #+#    #+#             */
-/*   Updated: 2024/06/01 16:49:39 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/06/03 21:38:51 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ char		**custom_split(char const *s, char c);
 int			aux_parse(char letter);
 int			size_str(char *str);
 void		final_free(t_mini *mini);
+void		free_split(char **split);
+void		free_envs(t_envs *envs);
+t_envs		*get_envs(char **original);
 t_matrix	*parse_str(char *str);
 
 #endif

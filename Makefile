@@ -6,7 +6,7 @@
 #    By: erpiana <erpiana@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/08 20:31:12 by erpiana           #+#    #+#              #
-#    Updated: 2024/06/01 16:50:28 by tsantana         ###   ########.fr        #
+#    Updated: 2024/06/03 19:38:58 by tsantana         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ CPPFLAGS         := $(addprefix -I, $(INCS)) -MP
 #                                  FILES                                       #
 #******************************************************************************#
 
-SRCS     += $(addprefix $(SRC_P), free_structs.c main_utils.c minishell.c custom_split.c parse_utils.c put_space.c)
+SRCS     += $(addprefix $(SRC_P), free_structs.c main_utils.c minishell.c custom_split.c parse_utils.c put_space.c env_vars.c)
 OBJS     += $(addprefix obj/, $(notdir $(SRCS:.c=.o)))
 NAME     := minishell
 LIBFT    := $(addprefix $(LIB_P), libft.a)
