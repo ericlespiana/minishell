@@ -6,7 +6,7 @@
 /*   By: erpiana <erpiana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/06/05 17:41:03 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:44:47 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	print_envs(t_envs *envs)
 {
 	while (envs)
 	{
-		ft_printf("ENVYKEY: %s - ENVCONTENT: %s\n", envs->envkey, envs->envcontent);
+		ft_printf("ENVKEY: %s - ENVCONTENT: %s\n", envs->envkey, envs->envcontent);
 		envs = envs->next;
 	}
 }
@@ -35,18 +35,15 @@ static void	print_mtx(t_matrix *mtx)
 static void	clear_exit(t_mini *mini)
 {
 	rl_clear_history();
+	final_free(mini);
 	free_envs(mini->envars);
 	exit(EXIT_SUCCESS);
 }
 
-static int	if_exit(t_mini *mini)
+static void	if_exit(t_mini *mini)
 {
-	if (!ft_strncmp(mini->in_ms, "exit", 4))
-	{
-		final_free(mini);
+	if (mini->in_ms && !ft_memcmp(mini->in_ms, "exit", 4))
 		clear_exit(mini);
-	}
-	return (0);
 }
 
 static void	add_item(t_mini *mini)
@@ -59,15 +56,13 @@ static void	add_item(t_mini *mini)
 static void	minishell(t_mini *mini)
 {
 	mini->in_ms = readline("minishell> ");
-	if (!if_exit(mini))
-	{
-		mini->in_ms = put_space_ms(mini->in_ms);
-		if (!mini->in_ms)
-			clear_exit(mini);
-		if (mini->in_ms[0] != '\0')
-			add_item(mini);
-		final_free(mini);
-	}
+	if_exit(mini);
+	mini->in_ms = put_space_ms(mini->in_ms);
+	if (!mini->in_ms)
+		clear_exit(mini);
+	if (mini->in_ms[0] != '\0')
+		add_item(mini);
+	final_free(mini);
 }
 
 int	main(void)
