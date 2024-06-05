@@ -6,12 +6,26 @@
 /*   By: erpiana <erpiana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 16:44:18 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/31 22:21:00 by erpiana          ###   ########.fr       */
+/*   Updated: 2024/06/05 18:40:43 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <stdlib.h>
+
+void	free_envs(t_envs *envs)
+{
+	t_envs	*next;
+
+	while (envs)
+	{
+		free(envs->envcontent);
+		free(envs->envkey);
+		next = envs->next;
+		free(envs);
+		envs = next;
+	}
+}
 
 static void	clear_matrix(t_matrix *mtx)
 {
@@ -41,5 +55,6 @@ void	final_free(t_mini *mini)
 		free(mini->in_ms);
 	if (mini->cmmds)
 		clear_matrix(mini->cmmds);
-	*mini = (t_mini){0};
+	mini->in_ms = NULL;
+	mini->cmmds = NULL;
 }
