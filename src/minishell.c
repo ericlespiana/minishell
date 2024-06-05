@@ -6,7 +6,7 @@
 /*   By: erpiana <erpiana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/06/03 22:14:09 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:15:50 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,13 @@ int	main(void)
 	while (1)
 	{
 		mini.in_ms = readline("minishell> ");
+		if (!ft_strncmp("exit", mini.in_ms, 4))
+		{
+			rl_clear_history();
+			final_free(&mini);
+			free_envs(mini.envars);
+			exit(EXIT_SUCCESS);
+		}	
 		mini.in_ms = put_space_ms(mini.in_ms);
 		ft_printf("%s\n", mini.in_ms);
 		if (!mini.in_ms)

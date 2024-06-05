@@ -6,7 +6,7 @@
 /*   By: erpiana <erpiana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 16:44:18 by tsantana          #+#    #+#             */
-/*   Updated: 2024/06/03 21:08:05 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:10:35 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,42 @@
 
 void	free_envs(t_envs *envs)
 {
-	t_envs	*temp;
+	t_envs	*next;
 
-	temp = NULL;
 	while (envs)
 	{
-		if (!envs->next)
-		{
-			free(envs->envcontent);
-			free(envs->envkey);
-			free(envs);
-			break ;
-		}
-		temp = envs;
-		envs = envs->next;
-		if (temp->envcontent)
-			free(temp->envcontent);
-		if (temp->envkey)
-			free(temp->envkey);
-		if (temp)
-			free(temp);
+		free(envs->envcontent);
+		free(envs->envkey);
+		next = envs->next;
+		free(envs);
+		envs = next;
 	}
 }
+
+// void	free_envs(t_envs *envs)
+// {
+// 	t_envs	*temp;
+//
+// 	temp = NULL;
+// 	while (envs)
+// 	{
+// 		if (!envs->next)
+// 		{
+// 			free(envs->envcontent);
+// 			free(envs->envkey);
+// 			free(envs);
+// 			break ;
+// 		}
+// 		temp = envs;
+// 		envs = envs->next;
+// 		if (temp->envcontent)
+// 			free(temp->envcontent);
+// 		if (temp->envkey)eten
+// 			free(temp->envkey);
+// 		if (temp)
+// 			free(temp);
+// 	}
+// }
 
 static void	clear_matrix(t_matrix *mtx)
 {

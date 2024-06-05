@@ -6,7 +6,7 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:56:23 by tsantana          #+#    #+#             */
-/*   Updated: 2024/06/03 22:14:04 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:03:34 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "minishell.h"
 #include <stdlib.h>
 
-static t_envs	*put_ls_colors(char *str)
+static t_envs	*make_env_nodes(char *str)
 {
 	t_envs	*env;
 	int		equal;
@@ -29,43 +29,31 @@ static t_envs	*put_ls_colors(char *str)
 	return (env);
 }
 
-static t_envs	*make_env_node(char	**envs_split)
-{
-	t_envs	*envs;
-
-	envs = malloc(sizeof(t_envs));
-	envs->envkey = ft_strdup(envs_split[0]);
-	envs->envcontent = ft_strdup(envs_split[1]);
-	envs->next = NULL;
-	free_split(envs_split);
-	return (envs);
-}
+// static t_envs	*make_env_node(char	**envs_split)
+// {
+// 	t_envs	*envs;
+//
+// 	envs = malloc(sizeof(t_envs));
+// 	envs->envkey = ft_strdup(envs_split[0]);
+// 	envs->envcontent = ft_strdup(envs_split[1]);
+// 	envs->next = NULL;
+// 	free_split(envs_split);
+// 	return (envs);
+// }
 
 t_envs	*get_envs(char **original)
 {
 	int		i;
 	t_envs	*envs;
 	t_envs	*head;
-	char	**split_env;
 
 	i = 1;
-	envs = NULL;
-	if (!envs)
-		envs = make_env_node(ft_split(original[0], '='));
+	envs = make_env_nodes(original[0]);
 	head = envs;
 	while (original[i])
 	{
-		if (ft_strncmp("LS_COLORS", original[i], 9) != 0)
-		{
-			split_env = ft_split(original[i], '=');
-			envs->next = make_env_node(split_env);
-			envs = envs->next;
-		}
-		else
-		{
-			envs->next = put_ls_colors(original[i]);
-			envs = envs->next;
-		}
+		envs->next = make_env_nodes(original[i]);
+		envs = envs->next;
 		i++;
 	}
 	return (head);
