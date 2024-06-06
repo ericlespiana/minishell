@@ -6,7 +6,7 @@
 /*   By: erpiana <erpiana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/06/05 18:44:47 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/06/06 15:51:24 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,13 @@ static void	minishell(t_mini *mini)
 {
 	mini->in_ms = readline("minishell> ");
 	if_exit(mini);
-	mini->in_ms = put_space_ms(mini->in_ms);
 	if (!mini->in_ms)
 		clear_exit(mini);
-	if (mini->in_ms[0] != '\0')
+	if (mini->in_ms[0] != '\0' && verify_parse(&mini) == 0)
+	{
+		mini->in_ms = put_space_ms(mini->in_ms);
 		add_item(mini);
+	}
 	final_free(mini);
 }
 

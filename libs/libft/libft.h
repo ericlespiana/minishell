@@ -6,7 +6,7 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:12:18 by tsantana          #+#    #+#             */
-/*   Updated: 2024/05/22 15:04:04 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/06/06 14:10:19 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ size_t		ft_strlen(const char *c);
 t_list		*ft_lstnew(char content);
 t_list		*ft_lstlast(t_list *lst);
 t_pf_list	*pf_ft_lstnew(char content);
+int			ft_isspace(char	c);
 int			ft_isalnum(int c);
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);

@@ -6,12 +6,32 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 20:08:25 by tsantana          #+#    #+#             */
-/*   Updated: 2024/06/03 20:34:15 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/06/06 15:16:34 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "minishell.h"
 #include <strings.h>
+
+int	verify_parse(t_mini **mini)
+{
+	int			i;
+	char	*temp;
+
+	i = 0;
+	temp = (*mini)->in_ms;
+	while (temp && ft_isspace(temp[i]) != 0)
+		i++;
+	if (temp[i] == '|')
+		return (ms_error(0), 1);
+	i = ft_strlen(temp) - 1;
+	while (i > 0 && ft_isspace(temp[i]))
+		i--;
+	if (aux_parse(temp[i]) == 2)
+		return (ms_error(1), 1);
+	return (0);
+}
 
 int	aux_parse(char letter)
 {

@@ -6,7 +6,7 @@
 #    By: tsantana <tsantana@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/12 14:23:04 by tsantana          #+#    #+#              #
-#    Updated: 2024/04/23 20:12:22 by tsantana         ###   ########.fr        #
+#    Updated: 2024/06/06 14:10:11 by tsantana         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS = ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	ft_lstnew_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c \
 	ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c \
 	ft_lstiter_bonus.c ft_printf.c ft_printf_utils.c ft_printf_utils_2.c \
+	ft_isspace.c
 
 HEADER = -I./libft.h
 

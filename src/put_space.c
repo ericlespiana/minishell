@@ -6,7 +6,7 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 15:46:29 by tsantana          #+#    #+#             */
-/*   Updated: 2024/06/03 15:30:03 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/06/06 14:22:47 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	*put_space_ms(char *str)
 	i = 0;
 	space = 0;
 	if (!str)
-		return (0);
+		return (NULL);
 	while (str[i])
 	{
 		if (aux_parse(str[i]) == 2)
