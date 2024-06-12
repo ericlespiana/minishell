@@ -6,7 +6,7 @@
 /*   By: erpiana <erpiana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/06/07 16:45:36 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/06/12 18:06:18 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,12 @@ static void	clear_exit(t_mini *mini)
 
 static void	if_exit(t_mini *mini)
 {
-	if (mini->in_ms && !ft_memcmp(mini->in_ms, "exit", 4))
+	if (mini->in_ms && ft_strlen(mini->in_ms) == 5
+		&& !ft_memcmp(mini->in_ms, "exit", 4))
+	{
+		ft_printf("exit\n");
 		clear_exit(mini);
+	}
 }
 
 static void	add_item(t_mini *mini)
@@ -59,7 +63,8 @@ static void	minishell(t_mini *mini)
 	if_exit(mini);
 	if (!mini->in_ms)
 		clear_exit(mini);
-	if (mini->in_ms[0] != '\0' && verify_parse(&mini) == 0)
+	if (!its_onlyspace(mini) && mini->in_ms[0] != '\0'
+		&& verify_parse(&mini) == 0)
 	{
 		mini->in_ms = put_space_ms(mini->in_ms);
 		add_item(mini);

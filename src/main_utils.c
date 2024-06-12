@@ -6,13 +6,37 @@
 /*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 20:08:25 by tsantana          #+#    #+#             */
-/*   Updated: 2024/06/09 14:31:30 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/06/12 18:06:23 by tsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "minishell.h"
+#include <readline/history.h>
 #include <strings.h>
+
+int	its_onlyspace(t_mini *mini)
+{
+	int		value;
+	int		i;
+	char	*ptr;
+
+	i = 0;
+	value = 0;
+	ptr = mini->in_ms;
+	while (ptr[i])
+	{
+		if (ft_isspace(ptr[i]))
+			value++;
+		i++;
+	}
+	if (value == 0)
+	{
+		add_history(ptr);
+		return (1);
+	}
+	return (0);
+}
 
 int	verify_parse(t_mini **mini)
 {
