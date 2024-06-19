@@ -1,4 +1,0 @@
--I
-includes
--I
-libs/libft
