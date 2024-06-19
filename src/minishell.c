@@ -6,7 +6,7 @@
 /*   By: erpiana <erpiana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/06/18 22:04:44 by erpiana          ###   ########.fr       */
+/*   Updated: 2024/06/19 19:33:27 by erpiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,31 +41,26 @@ static void	clear_exit(t_mini *mini)
 static void	if_exit(t_mini *mini)
 {
 	char	**matrix;
-	int		i;
 	int		j;
 
-	i = 0;
-	j = 0;
-	while (mini->in_ms[j] == ' ')
-		j++;
+	j = -1;
+	while (mini->in_ms[++j] == ' ');
 	if (ft_memcmp(&mini->in_ms[j], "exit", 4) == 0)
 	{
 		matrix = ft_split(&(mini->in_ms[j]), ' ');
-		while (matrix[i++] != NULL)
-		if (i > 2)
-			printf("too many arguments");
-		else
+		j = -1;
+		if (ft_strlen(matrix[0]) == 4)
 		{
-			if (ft_strlen(matrix[0]) == 4)
+			while (matrix[++j] != NULL);
+			if (j <= 2)
 			{
 				free_split(matrix);
 				clear_exit(mini);
-				exit(1);
 			}
+			printf("exit: too many arguments\n");
 		}
 		free_split(matrix);
 	}
-	return ;
 }
 
 static void	add_item(t_mini *mini)
