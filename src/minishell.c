@@ -6,7 +6,7 @@
 /*   By: erpiana <erpiana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/06/19 22:27:33 by erpiana          ###   ########.fr       */
+/*   Updated: 2024/06/19 22:41:53 by erpiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,38 @@ static void	add_item(t_mini *mini)
 	print_mtx(mini->cmmds);
 }
 
+static int	check_if_only_spaces(t_mini *mini)
+{
+	int	flag;
+	int	i;
+	
+	i = 0;
+	flag = 0;
+	while (mini->in_ms[i] != '\0')
+	{
+		if (ft_isspace(mini->in_ms[i]) == FALSE)
+		{
+			flag = 1;
+			break ;
+		}
+		i++;
+	}
+	if (flag == 0)
+		return (TRUE);
+	return (FALSE);
+}
+
 static void	minishell(t_mini *mini)
 {
 	mini->in_ms = readline("minishell> ");
 	if (!mini->in_ms)
 		clear_exit(mini);
 	if_exit(mini);
+	if(check_if_only_spaces(mini) == TRUE)
+	{
+		free(mini->in_ms);
+		return ;
+	}
 	//mini->in_ms = put_space_ms(mini->in_ms);
 	if (mini->in_ms[0] != '\0')
 		add_item(mini);
