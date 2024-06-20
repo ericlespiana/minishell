@@ -6,7 +6,7 @@
 /*   By: erpiana <erpiana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:24:53 by tsantana          #+#    #+#             */
-/*   Updated: 2024/06/19 19:33:27 by erpiana          ###   ########.fr       */
+/*   Updated: 2024/06/19 22:27:33 by erpiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	if_exit(t_mini *mini)
 	int		j;
 
 	j = -1;
-	while (mini->in_ms[++j] == ' ');
+	while (ft_isspace(mini->in_ms[++j]));
 	if (ft_memcmp(&mini->in_ms[j], "exit", 4) == 0)
 	{
 		matrix = ft_split(&(mini->in_ms[j]), ' ');
@@ -76,7 +76,7 @@ static void	minishell(t_mini *mini)
 	if (!mini->in_ms)
 		clear_exit(mini);
 	if_exit(mini);
-	mini->in_ms = put_space_ms(mini->in_ms);
+	//mini->in_ms = put_space_ms(mini->in_ms);
 	if (mini->in_ms[0] != '\0')
 		add_item(mini);
 	final_free(mini);

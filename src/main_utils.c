@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsantana <tsantana@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: erpiana <erpiana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 20:08:25 by tsantana          #+#    #+#             */
-/*   Updated: 2024/06/03 20:34:15 by tsantana         ###   ########.fr       */
+/*   Updated: 2024/06/19 22:27:21 by erpiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,12 @@ int	size_str(char *str)
 	while (str[i] && aux_parse(str[i]) == 0)
 		i++;
 	return (i);
+}
+
+int	ft_isspace(char c)
+{
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (TRUE);
+	else
+		return (FALSE);
 }
